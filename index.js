@@ -18,6 +18,7 @@ const downloadContentUrl = `${dropboxApiBaseUrl}/docs/download`
 let token
 let vueConfig
 let dir
+let tabs
 
 /**
  * JSON to Frontmatter
@@ -164,6 +165,15 @@ const appendFolderInfo = (docs) => Promise.all(
  */
 const filterEmpty = (docs) => docs.filter(doc => doc.folderInfo.folders && doc.folderInfo.folders.length > 1)
 
+/**
+ * Filter Docs
+ * 
+ * @description filters out irrelevant docs
+ * @param {[DocWithFolderInfo]} docs 
+ * @returns {[DocWithFolderInfo]} Docs
+ */
+const filterDocs = (docs) => docs.filter(doc => tabs.includes(doc.folderInfo.folders[1].name))
+
 
 /**
  * Append Doc Content
@@ -249,13 +259,15 @@ const generateSidebarContent = async(docs) => {
  * @param {String} contentDir relative path to content directory
  * @returns {[Doc]} Docs
  */
-const paperCMS = (dropboxApiToken, config, contentDir) => {
+const paperCMS = ({dropboxApiToken, config, contentDir, tabsList}) => {
   token = dropboxApiToken
   vueConfig = config
   dir = contentDir
+  tabs = tabsList
   return postGetPaperData(listDocsUrl)
     .then(appendFolderInfo)
     .then(filterEmpty)
+    .then(filterDocs)
     .then(appendDocContent)
     .then(appendDocLocations)
     .then(saveDocsLocally)
