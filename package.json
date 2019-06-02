@@ -1,0 +1,32 @@
+{
+  "name": "dropbox-paper-cms",
+  "version": "1.0.0",
+  "description": "Using Dropbox Paper APIs to generate static content in Vuepress",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha --reporter spec"
+  },
+  "engines": {
+    "node": ">=4.2.4"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Pterobyte/dropbox-paper-cms.git"
+  },
+  "keywords": [
+    "vuepress",
+    "dropbox",
+    "cms"
+  ],
+  "author": "JT Houk <jt1992@gmail.com> (https://www.jt-houk.com/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Pterobyte/dropbox-paper-cms/issues"
+  },
+  "homepage": "https://github.com/Pterobyte/dropbox-paper-cms#readme",
+  "dependencies": {
+    "case-it": "^1.0.1",
+    "node-fetch": "^2.6.0",
+    "promise-all-props": "^1.0.1"
+  }
+}
