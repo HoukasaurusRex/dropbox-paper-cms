@@ -1,4 +1,3 @@
-import path from 'path'
 import { promises } from 'fs'
 import packageJson from '../package.json'
 
@@ -11,10 +10,7 @@ const bumpedVersion = `${currentVersion[0]}.${
 
 packageJson.version = bumpedVersion
 
-writeFile(
-  path.join(__dirname, '../package.json'),
-  JSON.stringify(packageJson, undefined, 2)
-)
+writeFile('./package.json', JSON.stringify(packageJson, undefined, 2))
   .then(() => console.log(`Bumped version to ${bumpedVersion}`))
   .catch(err => {
     console.error(err)
