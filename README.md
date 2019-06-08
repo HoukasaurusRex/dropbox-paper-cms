@@ -2,6 +2,7 @@
 
 [![NPM Total Downloads](https://img.shields.io/npm/dt/dropbox-paper-cms.svg)](https://www.npmjs.com/package/dropbox-paper-cms)
 [![David Dependencies Status](https://david-dm.org/pterobyte/dropbox-paper-cms.svg)](https://david-dm.org/pterobyte/dropbox-paper-cms)
+[![Language grade: JavaScript](https://img.shields.io/lgtm/grade/javascript/g/Pterobyte/dropbox-paper-cms.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/Pterobyte/dropbox-paper-cms/context:javascript)
 [![prs welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/pterobyte/dropbox-paper-cms/master)
 [![styled with prettier](https://img.shields.io/badge/styled_with-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
@@ -10,8 +11,8 @@ Using [Dropbox Paper APIs](https://dropbox.github.io/dropbox-api-v2-explorer/) t
 
 *WARNING*: Sidebar auto-generation currently only compatible with vuepress
 
-![dropbox](https://github.com/pterobyte/dropbox-paper-cms/assets/dropbox.png)
-![vuepress](https://github.com/pterobyte/dropbox-paper-cms/assets/vuepress.png)
+![dropbox](https://github.com/Pterobyte/dropbox-paper-cms/tree/master/assets/dropbox.png)
+![vuepress](https://github.com/Pterobyte/dropbox-paper-cms/tree/master/assets/vuepress.png)
 
 Dropbox Paper CMS was developed so that CMS sites could easily update their content without writing any code. One only needs to write documents in [Dropbox Paper](https://paper.dropbox.com/), and Dropbox Paper CMS  will fetche them in markdown, save them locally, then optionally update your CMS sidebar with new file paths (currently only available for vuepress, [PRs welcome](https://github.com/pterobyte/dropbox-paper-cms/.github/CONTRIBUTING.md/.github/CONTRIBUTING.md)).
 
@@ -47,11 +48,11 @@ Dropbox Paper CMS was developed so that CMS sites could easily update their cont
 
 - Create a new App
 
-![Create App](https://github.com/pterobyte/dropbox-paper-cms/assets/create-app.png)
+![Create App](https://github.com/Pterobyte/dropbox-paper-cms/tree/master/assets/create-app.png)
 
 - Generate an access token
 
-![Generate Access Token](https://github.com/pterobyte/dropbox-paper-cms/assets/generate-access-token.png)
+![Generate Access Token](https://github.com/Pterobyte/dropbox-paper-cms/tree/master/assets/generate-access-token.png)
 
 ### Options
 
