@@ -1,0 +1,12 @@
+{
+  "linters": {
+    "*.{js}": [
+      "yarn bump:version",
+      "yarn lint:staged",
+      "git add"
+    ]
+  },
+  "ignore": [
+    "node_modules/"
+  ]
+}

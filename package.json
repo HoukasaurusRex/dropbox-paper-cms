@@ -4,7 +4,22 @@
   "description": "Using Dropbox Paper APIs to generate static content in Vuepress",
   "main": "index.js",
   "scripts": {
-    "test": "mocha --reporter spec"
+    "bump:version": "node src/bump-version.js",
+    "lint:staged": "eslint --quiet --fix",
+    "test": "echo 'No tests specified'"
+  },
+  "dependencies": {
+    "case-it": "^1.0.1",
+    "node-fetch": "^2.6.0",
+    "promise-all-props": "^1.0.1"
+  },
+  "devDependencies": {
+    "eslint": "^5.16.0",
+    "eslint-config-prettier": "^4.3.0",
+    "eslint-plugin-prettier": "^3.1.0",
+    "husky": "^2.4.0",
+    "lint-staged": "^8.2.0",
+    "prettier": "^1.18.2"
   },
   "engines": {
     "node": ">=4.2.4"
@@ -23,16 +38,5 @@
   "bugs": {
     "url": "https://github.com/Pterobyte/dropbox-paper-cms/issues"
   },
-  "homepage": "https://github.com/Pterobyte/dropbox-paper-cms#readme",
-  "dependencies": {
-    "case-it": "^1.0.1",
-    "node-fetch": "^2.6.0",
-    "promise-all-props": "^1.0.1"
-  },
-  "devDependencies": {
-    "eslint": "^5.16.0",
-    "eslint-config-prettier": "^4.3.0",
-    "eslint-plugin-prettier": "^3.1.0",
-    "prettier": "^1.18.2"
-  }
+  "homepage": "https://github.com/Pterobyte/dropbox-paper-cms#readme"
 }
