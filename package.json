@@ -22,12 +22,6 @@
     "lint-staged": "^8.2.0",
     "prettier": "^1.18.2"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged",
-      "pre-push": "yarn test && npm publish"
-    }
-  },
   "engines": {
     "node": "^12.4.0"
   },
