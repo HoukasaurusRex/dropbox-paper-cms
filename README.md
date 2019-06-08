@@ -1,5 +1,6 @@
 # Dropbox Paper CMS
 
+[![NPM Total Downloads](https://img.shields.io/npm/dt/dropbox-paper-cms.svg)](https://www.npmjs.com/package/dropbox-paper-cms)
 [![David Dependencies Status](https://david-dm.org/pterobyte/dropbox-paper-cms.svg)](https://david-dm.org/pterobyte/dropbox-paper-cms)
 [![prs welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/pterobyte/dropbox-paper-cms/master)
 [![styled with prettier](https://img.shields.io/badge/styled_with-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
