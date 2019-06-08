@@ -3,10 +3,11 @@
   "version": "1.0.2",
   "description": "Using Dropbox Paper APIs to generate static content in Vuepress",
   "main": "index.js",
+  "type": "module",
   "scripts": {
-    "bump:version": "node src/bump-version.js",
+    "bump:version": "node --experimental-modules src/bump-version.js",
     "lint:staged": "eslint --quiet --fix",
-    "test": "echo 'No tests specified'"
+    "test": "node --experimental-modules index.js"
   },
   "dependencies": {
     "case-it": "^1.0.1",

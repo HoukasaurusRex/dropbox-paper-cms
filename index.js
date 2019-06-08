@@ -3,12 +3,14 @@
  * @typedef {{id:string,folders:[{}],metaData:{},content:string}} DocWithContent
  * @typedef {{id:string,folders:[{}],metaData:{},content:string,location:string}} Doc
  */
-const path = require('path')
-const { mkdir, writeFile } = require('fs').promises
-const fetch = require('node-fetch')
-const promiseAllProps = require('promise-all-props')
-const { kebabCaseIt } = require('case-it')
+import path from 'path'
+import { promises } from 'fs'
+import fetch from 'node-fetch'
+import promiseAllProps from 'promise-all-props'
+import caseIt from 'case-it'
 
+const { kebabCaseIt } = caseIt
+const { mkdir, writeFile } = promises
 const dropboxApiBaseUrl = 'https://api.dropboxapi.com/2/paper'
 const listDocsUrl = `${dropboxApiBaseUrl}/docs/list`
 const getFolderInfoUrl = `${dropboxApiBaseUrl}/docs/get_folder_info`
@@ -253,13 +255,13 @@ const saveDocsLocally = docs => {
  * @returns {[Doc]} Docs
  */
 const generateSidebarContent = async docs => {
+  if (!vueConfig) return docs
   const tabs = docs.map(doc => doc.folders[1].name).filter(onlyUnique)
   const pageLists = tabs.map(tab => ({
     tab: `/${tab}/`,
     pages: returnPagesList(docs, tab)
   }))
   updateSidebar(pageLists)
-  console.log(JSON.stringify(pageLists, undefined, 2))
   await writeFile(
     `${dir}/.vuepress/config.js`,
     `module.exports = ${JSON.stringify(vueConfig, undefined, 2)}`
@@ -270,13 +272,11 @@ const generateSidebarContent = async docs => {
 /**
  * Paper CMS
  *
- * @description fetches dropbox paper files in markdown, writes to files in contentDir, then updates CMS config sidebar with new file paths
- * @param {String} dropboxApiToken API token for Dropbox API
- * @param {JSON} config CMS JSON or JS config file
- * @param {String} contentDir relative path to content directory
+ * @description fetches dropbox paper files in markdown, writes to files in contentDir, then optionally updates CMS config sidebar with new file paths
+ * @param {{dropboxApiToken:String, contentDir:String, tabsList:[String], config?:JSON }} options
  * @returns {[Doc]} Docs
  */
-const paperCMS = ({ dropboxApiToken, config, contentDir, tabsList }) => {
+export default ({ dropboxApiToken, contentDir, tabsList, config }) => {
   token = dropboxApiToken
   vueConfig = config
   dir = contentDir
@@ -290,5 +290,3 @@ const paperCMS = ({ dropboxApiToken, config, contentDir, tabsList }) => {
     .then(saveDocsLocally)
     .then(generateSidebarContent)
 }
-
-module.exports = paperCMS

@@ -1,8 +1,6 @@
 {
   "extends": ["plugin:prettier/recommended"],
   "env": {
-      "commonjs": true,
-      "es6": true,
       "node": true
   },
   "globals": {
@@ -10,7 +8,8 @@
       "SharedArrayBuffer": "readonly"
   },
   "parserOptions": {
-      "ecmaVersion": 2018
+      "ecmaVersion": 2019,
+      "sourceType": "module"
   },
   "rules": {
   }
