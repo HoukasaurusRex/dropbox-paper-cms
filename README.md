@@ -10,6 +10,7 @@
 Using [Dropbox Paper APIs](https://dropbox.github.io/dropbox-api-v2-explorer/) to generate static content your CMS website
 
 *WARNING*: Sidebar auto-generation currently only compatible with vuepress
+*WARNING*: This node module is an experiment with [ES Modules](https://nodejs.org/api/esm.html) and is incompatible with [CommonJS](https://requirejs.org/) environments in its current state. Future releases will provide dual-compatibility, but for support in CommonJS environments, use version 1.0.2.
 
 ![dropbox](assets/dropbox.png)
 ![vuepress](assets/vuepress.png)
