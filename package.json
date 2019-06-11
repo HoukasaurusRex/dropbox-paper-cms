@@ -5,9 +5,9 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "bump:version": "node --experimental-modules src/bump-version.js",
+    "bump:version": "node src/bump-version.js",
     "lint:staged": "eslint --quiet --fix",
-    "test": "node --experimental-modules index.js"
+    "test": "node index.js"
   },
   "dependencies": {
     "case-it": "^1.0.1",

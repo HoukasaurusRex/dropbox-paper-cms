@@ -1,5 +1,5 @@
-import { promises } from 'fs'
-import packageJson from '../package.json'
+const { promises } = require('fs')
+const packageJson = require('../package.json')
 
 const { writeFile } = promises
 const currentVersion = packageJson.version.split('.')

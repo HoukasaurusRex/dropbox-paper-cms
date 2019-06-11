@@ -3,11 +3,11 @@
  * @typedef {{id:string,folders:[{}],metaData:{},content:string}} DocWithContent
  * @typedef {{id:string,folders:[{}],metaData:{},content:string,location:string}} Doc
  */
-import path from 'path'
-import { promises } from 'fs'
-import fetch from 'node-fetch'
-import promiseAllProps from 'promise-all-props'
-import caseIt from 'case-it'
+const path = require('path')
+const { promises } = require('fs')
+const fetch = require('node-fetch')
+const promiseAllProps = require('promise-all-props')
+const caseIt = require('case-it')
 
 const { kebabCaseIt } = caseIt
 const { mkdir, writeFile } = promises
@@ -34,7 +34,7 @@ const jsonToFrontmatter = json => `---\n${JSON.stringify(json, null, 2)}\n---\n`
 /**
  * Get Folder Name
  *
- * @description gets first-nested folder name from array of folders
+ * @description gets first-nested folder name = require(array of folders
  * @param {[]} folders
  * @returns {String} Folder Name
  */
@@ -43,7 +43,7 @@ const getFolderName = folders => folders.slice(1)[0].name // slice out parent di
 /**
  *  Get Folder Path
  *
- * @description returns a path string from a paper api folderInfo object
+ * @description returns a path string = require(a paper api folderInfo object
  * @param {{ folders:[] }} folderInfo
  * @returns {String} Path
  */
@@ -80,7 +80,7 @@ const postGetPaperContent = async (url, docId) => {
 /**
  * POST Get Paper Data
  *
- * @description gets document data from paper api
+ * @description gets document data = require(paper api
  * @param {String} url
  * @param {{}} body
  * @returns {{}} Paper Data
@@ -250,7 +250,7 @@ const saveDocsLocally = docs => {
 /**
  * Generate Sidebar Content
  *
- * @description filters folders out from docs and adds page names and tabs to vueconfig
+ * @description filters folders out = require(docs and adds page names and tabs to vueconfig
  * @param {[Doc]} docs
  * @returns {[Doc]} Docs
  */
@@ -276,7 +276,7 @@ const generateSidebarContent = async docs => {
  * @param {{dropboxApiToken:String, contentDir:String, tabsList:[String], config?:JSON }} options
  * @returns {[Doc]} Docs
  */
-export default ({ dropboxApiToken, contentDir, tabsList, config }) => {
+module.exports = ({ dropboxApiToken, contentDir, tabsList, config }) => {
   token = dropboxApiToken
   vueConfig = config
   dir = contentDir
