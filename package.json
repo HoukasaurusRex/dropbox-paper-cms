@@ -7,7 +7,7 @@
   "scripts": {
     "bump:version": "node src/bump-version.js",
     "lint:staged": "eslint --quiet --fix",
-    "test": "node index.js"
+    "test": "mocha ./src/*.test.js"
   },
   "dependencies": {
     "case-it": "^1.0.1",
@@ -29,6 +29,7 @@
   "keywords": [
     "vuepress",
     "dropbox",
+    "paper",
     "cms"
   ],
   "author": "JT Houk <jt1992@gmail.com> (https://www.jt-houk.com/)",

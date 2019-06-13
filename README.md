@@ -14,11 +14,16 @@ Using [Dropbox Paper APIs](https://dropbox.github.io/dropbox-api-v2-explorer/) t
 ![dropbox](assets/dropbox.png)
 ![vuepress](assets/vuepress.png)
 
-Dropbox Paper CMS was developed so that CMS sites could easily update their content without writing any code. One only needs to write documents in [Dropbox Paper](https://paper.dropbox.com/), and Dropbox Paper CMS  will fetche them in markdown, save them locally, then optionally update your CMS sidebar with new file paths (currently only available for vuepress, [PRs welcome](https://github.com/pterobyte/dropbox-paper-cms/.github/CONTRIBUTING.md/.github/CONTRIBUTING.md)).
+Dropbox Paper CMS was developed so that CMS sites could easily update their content without writing any code. One only needs to write documents in [Dropbox Paper](https://paper.dropbox.com/), and Dropbox Paper CMS  will fetch documents in markdown, save them locally, then optionally update your CMS sidebar with new file paths (currently only available for vuepress, [PRs welcome](https://github.com/pterobyte/dropbox-paper-cms/.github/CONTRIBUTING.md/.github/CONTRIBUTING.md)).
 
 ## Contents  
 
-- [Usage](#usage)
+- [Getting Started](#getting-started)
+- [API Reference](#api-reference)
+  - [Docs Schema](#docs-schema)
+  - [fetchPaperDocs](#fetchpaperdocs)
+  - [generateContent](#generateContent)
+  - [generateConfig](#generateConfig) *experimental*
 - [Examples](#examples)
 - [Limitations](#limitations)
 - [Contributing](#contributing)
@@ -26,7 +31,7 @@ Dropbox Paper CMS was developed so that CMS sites could easily update their cont
 - [License](#license)
 - [Acknowledgments](#acknowledgments)
 
-## Usage
+## Getting Started
 
 ### Install
 
@@ -54,16 +59,90 @@ Dropbox Paper CMS was developed so that CMS sites could easily update their cont
 
 ![Generate Access Token](assets/generate-access-token.png)
 
-### Options
+## API Reference
 
-Dropbox Paper CMS exports one function that takes an `options` parameter.
+### Docs Schema
+
+Each API makes use of this custom schema for your Dropbox Paper documents. Since the Dropbox Paper APIs do not provide a convenient way to fetch and manage content, this module attempts to alleviate that by providing a standard schema to use as you like with all your Dropbox Paper files.
+
+```js
+[
+  {
+    id: 'string',
+    folders: [
+      {
+        id: 'string',
+        name: 'string'
+      }
+    ],
+    metaData: JSON,
+    content: JSON,
+    location: 'string'
+  }
+]
+```
+
+### fetchPaperDocs
+
+Fetches dropbox paper files and metaData from a list of dropbox folders and returns documents in a promise.
+
+#### Parameters
+
+`{Options}`
+
+Pass an options object into the `fetchPaperDocs` function
+
+```js
+{
+  dropboxApiToken: 'string',
+  contentDir: 'string',
+  folders: [ 'string' ]
+}
+```
 
 | Option              | Type            | Description                                                                             | Example                                               |
 |-------------------  |---------------  |---------------------------------------------------------------------------------------  |------------------------------------------------------ |
 | dropboxApiToken     | String          | Token generated from your Dropbox Paper App Console                                     | bwgnBMfB-LFFFYDNIYVb1zC6J6kBkvp_FwvISvJp989Tm9dx      |
 | contentDir          | String          | Name or path of the directory you want dropbox-paper-cms to write markdown files to     | 'content'                                             |
-| tabsList            | [String]   | An array of tab names matching the folders in your Dropbox Paper directory              | ['blog', 'portfolio', 'guide']                        |
-| config (optional)   | JSON            | Optional config file to update sidebar content to. (Currently only supports vuepress)   | const config = require('./content/.vuepress/config')  |
+| folders            | [String]   | An array of folder names matching the folders in your Dropbox Paper directory              | ['blog', 'portfolio', 'guide']
+
+#### Returns
+
+Promise<[Docs](#docs-schema)>
+
+### generateContent
+
+Writes Dropbox Paper docs to local markdown files using node's filesystem module
+
+#### Parameters
+
+[Docs](#docs-schema), `contentDir`
+
+Parameter        | Type                          | Description                                 | Example          |
+|--------------  |-----------------------------  |---------------------------------------------|----------------- |
+| Docs           | [Docs](#docs-schema)          | Docs returned from `fetchPaperDocs`         |                  |
+| contentDir     | String                        | Path to your static content directory       | './content'      |
+
+#### Returns
+
+Promise<[Docs](#docs-schema)>
+
+### generateConfig
+
+Writes Dropbox Paper docs to local markdown files using node's filesystem module
+
+#### Parameters
+
+[Docs](#docs-schema), `config`
+
+Parameter        | Type                          | Description                                 | Example                          |
+|--------------  |-----------------------------  |---------------------------------------------|--------------------------------- |
+| Docs           | [Docs](#docs-schema)          | Docs returned from `fetchPaperDocs`         |                                  |
+| config         | JSON                          | Config file for your static site generator  | require('./.vuepress/config.js') |
+
+#### Returns
+
+Promise<[Docs](#docs-schema)>
 
 ## Examples
 
@@ -71,23 +150,28 @@ Dropbox Paper CMS exports one function that takes an `options` parameter.
 const paperCMS = require('dropbox-paper-cms')
 const vueConfig = require('./content/.vuepress/config')
 
+const contentDir = 'content'
 const options = {
+  contentDir,
   dropboxApiToken: 'bwgnBMfB-LFFFYDNIYVb1zC6J6kBkvp_FwvISvJp989Tm9dx ', // NOTE: keep this token secret
-  config: vueConfig,
-  contentDir: 'content',
-  tabsList: ['blog']
+  folders: [
+    'blog',
+    'portfolio',
+    'guide'
+  ]
 }
 
-paperCMS(options)
-  .then(docs => console.log(`Successfully wrote ${docs.length} docs!`))
+paperCMS.fetchPaperDocs(options)
+  .then(docs => paperCMS.generateContent(docs, contentDir))
+  .then(docs => paperCMS.generateConfig(docs, vueConfig)) // only compatible with vuepress for now
   .catch(console.error)
 ```
 
 ## Limitations
 
-- Dropbox API App tokens only support full access to dropbox paper account instead of limiting access to a single folder. This is why  you must specify the tabs to match the corresponding folders in your Dropbox Paper account.
+- Dropbox API App tokens only support full access to dropbox paper account instead of limiting access to a single folder. This is why  you must specify the folders to match the corresponding folders in your Dropbox Paper account.
 
-- Sidebar content only generated in vuepress configuration files, so manual configuration is required for other CMS frameworks.
+- For now, sidebar content only generated in vuepress configuration files, so manual configuration is required for other static site generators.
 
 - Content is sorted alphabetically (or alphanumerically), but future versions will allow configuration.
 
