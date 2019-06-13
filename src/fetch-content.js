@@ -1,4 +1,6 @@
 /**
+ * @typedef {import('../index').folders} folders
+ * @typedef {import('../index').folderInfo} folderInfo
  * @typedef {import('../index').BasicDoc} BasicDoc
  * @typedef {import('../index').DocWithFolderInfo} DocWithFolderInfo
  * @typedef {import('../index').DocWithContent} DocWithContent
@@ -21,17 +23,17 @@ const downloadContentUrl = `${dropboxApiBaseUrl}/docs/download`
  * Get Folder Name
  *
  * @description gets first-nested folder name from an array of folders
- * @param {[]} folders
+ * @param {folders} folders
  * @returns {String} Folder Name
  */
-const getFolderName = folders => folders.slice(1)[0].name // slice out parent directory
+const getFolderName = folders => folders.slice(1)[0].name // ignore parent directories
 
 /**
  *  Get Folder Path
  *
  * @description returns a path string from a paper api folderInfo object
  * @param {String} dir Path to content directory
- * @param {DocWithFolderInfo} folderInfo
+ * @param {folderInfo} folderInfo
  * @returns {String} Path
  */
 const getFolderPath = (dir, folderInfo) =>

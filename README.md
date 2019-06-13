@@ -193,4 +193,4 @@ This project is licensed under the MIT License - see the [LICENSE](https://githu
 
 This project was inspired by a project by [De Voorhoede](https://github.com/voorhoede/playbook) on using Dropbox Paper as a Content Management System.
 
-[Guide To Publish Via Slack](https://www.voorhoede.nl/en/blog/dropbox-paper-as-a-headless-cms/)
+[Guide to publish using slack webhooks](https://www.voorhoede.nl/en/blog/dropbox-paper-as-a-headless-cms/)

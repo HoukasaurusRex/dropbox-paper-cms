@@ -2,7 +2,7 @@
  * @typedef {import('../index.js').DocWithContentAndLocation} Doc
  */
 const {
-  postGetPaperData,
+  paperAPI,
   appendFolderInfo,
   appendDocContent,
   appendDocLocations
@@ -14,12 +14,14 @@ const listDocsUrl = `${dropboxApiBaseUrl}/docs/list`
 /**
  * Fetch Paper Docs
  *
- * @description fetches dropbox paper files and metaData from a list of dropbox folders
+ * @description Fetches dropbox paper files and metaData from a list of dropbox folders.
+ * Builds and returns a schema for Dropbox Paper documents that's easily integratable with most
+ * static site generators.
  * @param {{dropboxApiToken:String, contentDir:String, folders:[String] }} options
  * @returns {[Doc]} Docs
  */
 module.exports = ({ dropboxApiToken, contentDir, folders }) =>
-  postGetPaperData(listDocsUrl, dropboxApiToken)
+  paperAPI(listDocsUrl, dropboxApiToken)
     .then(docs => appendFolderInfo(docs, dropboxApiToken))
     .then(docs => filterEmpty(docs))
     .then(docs => filterFolders(docs, folders))
