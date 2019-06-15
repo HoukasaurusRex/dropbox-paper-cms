@@ -1,7 +1,7 @@
 /**
  * @typedef {import('dropbox-paper-cms').DocWithContentAndLocation} Doc
  */
-
+const path = require('path')
 const { promises } = require('fs')
 
 const { mkdir, writeFile } = promises
@@ -33,7 +33,7 @@ module.exports = (docs, dir) => {
       )
     )
     writeFile(
-      `${dir}/meta-tree.json`,
+      path.join(__dirname, `${dir}/meta-tree.json`),
       JSON.stringify(
         docs.map(({ id, folders, metaData, location }) => ({
           id,

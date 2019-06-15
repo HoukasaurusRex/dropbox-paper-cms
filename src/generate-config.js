@@ -1,7 +1,8 @@
 /**
  * @typedef {import('dropbox-paper-cms').DocWithContentAndLocation} Doc
  */
-
+const path = require('path')
+const { kebabCaseIt } = require('case-it')
 const { promises } = require('fs')
 
 const { writeFile } = promises
@@ -46,8 +47,9 @@ const returnPagesList = (docs, tab) => {
  *
  * @description updates vueConfig with pages tabs and arrays
  * @param {[String]} pageLists
+ * @param {JSON} vueConfig
  */
-const updateSidebar = pageLists => {
+const updateSidebar = (pageLists, vueConfig) => {
   pageLists.forEach(list => {
     vueConfig.themeConfig.sidebar[list.tab] = list.pages
   })
@@ -60,10 +62,11 @@ const updateSidebar = pageLists => {
  * and writes individual page names and tabs to provided config file
  * in JSON format after a 'module.exports = ' method
  * @param {[Doc]} docs
+ * @param {String} dir
  * @param {JSON} config
  * @returns {[Doc]} Docs
  */
-module.exports = async (docs, config) => {
+module.exports = async (docs, dir, config) => {
   // TODO: support more static site generator config files
   if (!config) {
     throw new Error('Must provide a valid static site generator config file')
@@ -73,10 +76,10 @@ module.exports = async (docs, config) => {
     tab: `/${tab}/`,
     pages: returnPagesList(docs, tab)
   }))
-  updateSidebar(pageLists)
+  updateSidebar(pageLists, config)
   await writeFile(
-    `${dir}/.vuepress/config.js`,
-    `module.exports = ${JSON.stringify(vueConfig, undefined, 2)}`
+    path.join(__dirname, `${dir}/.vuepress/config.js`),
+    `module.exports = ${JSON.stringify(config, undefined, 2)}`
   )
   return docs
 }

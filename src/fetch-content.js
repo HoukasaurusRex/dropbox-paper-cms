@@ -8,13 +8,14 @@
  *
  */
 const path = require('path')
+const dotenv = require('dotenv-defaults')
 const fetch = require('node-fetch')
 const promiseAllProps = require('promise-all-props')
 const caseIt = require('case-it')
 
+dotenv.config()
 const { kebabCaseIt } = caseIt
-
-const dropboxApiBaseUrl = 'https://api.dropboxapi.com/2/paper'
+const dropboxApiBaseUrl = process.env.DROPBOX_API_BASE_URL
 const getFolderInfoUrl = `${dropboxApiBaseUrl}/docs/get_folder_info`
 const getMetaDataUrl = `${dropboxApiBaseUrl}/docs/get_metadata`
 const downloadContentUrl = `${dropboxApiBaseUrl}/docs/download`
@@ -37,7 +38,7 @@ const getFolderName = folders => folders.slice(1)[0].name // ignore parent direc
  * @returns {String} Path
  */
 const getFolderPath = (dir, folderInfo) =>
-  path.join(dir, getFolderName(folderInfo.folders))
+  path.join(__dirname, path.join(dir, getFolderName(folderInfo.folders)))
 
 /**
  * Paper API
@@ -47,15 +48,15 @@ const getFolderPath = (dir, folderInfo) =>
  * all Dropbox Paper APIs.
  * @param {String} url API Endpoint URL
  * @param {String} token Dropbox API Generated Token
- * @param {{}} body Fetch Body
- * @param {{}} headers Fetch Headers
+ * @param {{}} [body] Fetch Body
+ * @param {{}} [headers] Fetch Headers
  * @returns {{}} Paper Data
  * @throws Fetch Error
  */
 const paperAPI = async (
   url,
   token,
-  body = {},
+  body,
   headers = { 'Content-Type': 'application/json' }
 ) => {
   const options = {
@@ -63,15 +64,20 @@ const paperAPI = async (
     headers: {
       ...headers,
       Authorization: `Bearer ${token}`
-    },
-    body: JSON.stringify(body)
+    }
+  }
+  if (body) {
+    options.body = JSON.stringify(body)
   }
   const res = await fetch(url, options)
-  if (res.ok) {
+  if (res.ok && body) {
     return res.json()
+  } else if (res.ok) {
+    return res.text()
+  } else {
+    const errorMsg = await res.text()
+    throw new Error(errorMsg)
   }
-  const errorMsg = await res.text()
-  throw new Error(errorMsg)
 }
 
 /**
@@ -115,7 +121,12 @@ exports.appendDocContent = (docs, token, dir) =>
         folders: folderInfo.folders,
         directory: getFolderPath(dir, folderInfo),
         metaData: paperAPI(getMetaDataUrl, token, { doc_id: id }),
-        content: paperAPI(downloadContentUrl, token, downloadContentHeaders)
+        content: paperAPI(
+          downloadContentUrl,
+          token,
+          undefined,
+          downloadContentHeaders
+        )
       })
     })
   )
