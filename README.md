@@ -161,7 +161,8 @@ const options = {
   ]
 }
 
-paperCMS.fetchPaperDocs(options)
+paperCMS
+  .fetchPaperDocs(options)
   .then(docs => paperCMS.generateContent(docs, contentDir))
   .then(docs => paperCMS.generateConfig(docs, vueConfig)) // only compatible with vuepress for now
   .catch(console.error)
