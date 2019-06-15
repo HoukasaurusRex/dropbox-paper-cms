@@ -1,7 +1,6 @@
 /**
  * @typedef {import('../index.js').DocWithContentAndLocation} Doc
  */
-const dotenv = require('dotenv-defaults')
 const {
   paperAPI,
   appendFolderInfo,
@@ -10,8 +9,7 @@ const {
 } = require('./fetch-content')
 const { filterEmpty, filterFolders } = require('./filter-content')
 
-dotenv.config()
-const dropboxApiBaseUrl = process.env.DROPBOX_API_BASE_URL
+const dropboxApiBaseUrl = 'https://api.dropboxapi.com/2/paper'
 const listDocsUrl = `${dropboxApiBaseUrl}/docs/list`
 
 /**

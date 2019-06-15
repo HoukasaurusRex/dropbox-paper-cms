@@ -8,14 +8,12 @@
  *
  */
 const path = require('path')
-const dotenv = require('dotenv-defaults')
 const fetch = require('node-fetch')
 const promiseAllProps = require('promise-all-props')
 const caseIt = require('case-it')
 
-dotenv.config()
 const { kebabCaseIt } = caseIt
-const dropboxApiBaseUrl = process.env.DROPBOX_API_BASE_URL
+const dropboxApiBaseUrl = 'https://api.dropboxapi.com/2/paper'
 const getFolderInfoUrl = `${dropboxApiBaseUrl}/docs/get_folder_info`
 const getMetaDataUrl = `${dropboxApiBaseUrl}/docs/get_metadata`
 const downloadContentUrl = `${dropboxApiBaseUrl}/docs/download`
