@@ -62,3 +62,7 @@ typings/
 
 # OS files
 .DS_Store
+
+# Generated content
+content/
+!content/.vuepress/config.js

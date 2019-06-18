@@ -5,9 +5,8 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "bump:version": "node src/bump-version.js",
     "lint:staged": "eslint --quiet --fix",
-    "test": "mocha ./src/*.test.js"
+    "test": "ava ./src/*.test.js"
   },
   "dependencies": {
     "case-it": "^1.0.1",
@@ -16,6 +15,7 @@
     "promise-all-props": "^1.0.1"
   },
   "devDependencies": {
+    "ava": "^2.1.0",
     "eslint": "^5.16.0",
     "eslint-config-prettier": "^4.3.0",
     "eslint-plugin-prettier": "^3.1.0",
