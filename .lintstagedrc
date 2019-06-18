@@ -1,8 +1,8 @@
 {
   "linters": {
     "*.{js}": [
-      "yarn bump:version",
       "yarn lint:staged",
+      "yarn version --patch",
       "git add"
     ]
   },
