@@ -78,7 +78,7 @@ module.exports = async (docs, dir, config) => {
   }))
   updateSidebar(pageLists, config)
   await writeFile(
-    path.join(dir, 'vuepress/config.js'),
+    path.join(dir, '.vuepress/config.js'),
     `module.exports = ${JSON.stringify(config, undefined, 2)}`
   )
   return docs
