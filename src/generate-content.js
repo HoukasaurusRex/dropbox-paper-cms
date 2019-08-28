@@ -33,7 +33,7 @@ module.exports = (docs, dir) => {
       )
     )
     writeFile(
-      path.join(__dirname, `${dir}/meta-tree.json`),
+      path.join(dir, 'meta-tree.json'),
       JSON.stringify(
         docs.map(({ id, folders, metaData, location }) => ({
           id,

@@ -36,7 +36,7 @@ const getFolderName = folders => folders.slice(1)[0].name // ignore parent direc
  * @returns {String} Path
  */
 const getFolderPath = (dir, folderInfo) =>
-  path.join(__dirname, path.join(dir, getFolderName(folderInfo.folders)))
+  path.join(dir, getFolderName(folderInfo.folders))
 
 /**
  * Paper API
