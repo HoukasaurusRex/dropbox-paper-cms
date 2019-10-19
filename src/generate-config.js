@@ -30,7 +30,7 @@ function onlyUnique(value, index, self) {
  * @returns {[String]} Pages List
  */
 const returnPagesList = (docs, tab) => {
-  const pages = ['']
+  const pages = []
   docs
     .filter(doc => doc.folders[1].name === tab)
     .forEach(doc => {
