@@ -1,12 +1,7 @@
 {
-  "linters": {
-    "*.{js}": [
-      "yarn lint:staged",
-      "yarn version --patch",
-      "git add"
-    ]
-  },
-  "ignore": [
-    "node_modules/"
+  "*.{js}": [
+    "yarn lint:fix",
+    "yarn version --patch",
+    "git add"
   ]
 }

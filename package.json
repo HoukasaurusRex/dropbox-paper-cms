@@ -1,26 +1,26 @@
 {
   "name": "dropbox-paper-cms",
-  "version": "1.0.15",
+  "version": "1.0.17",
   "description": "Using Dropbox Paper APIs to generate static content in Vuepress",
   "main": "index.js",
   "scripts": {
-    "lint:staged": "eslint --quiet --fix",
+    "lint:fix": "eslint --quiet --fix",
     "test": "ava ./src/*.test.js"
   },
   "dependencies": {
     "case-it": "^1.0.1",
-    "dotenv-defaults": "^1.0.2",
+    "dotenv-defaults": "^1.0.3",
     "node-fetch": "^2.6.0",
     "promise-all-props": "^1.0.1"
   },
   "devDependencies": {
-    "ava": "^2.1.0",
-    "eslint": "^5.16.0",
-    "eslint-config-prettier": "^4.3.0",
-    "eslint-plugin-prettier": "^3.1.0",
-    "husky": "^2.4.0",
-    "lint-staged": "^8.2.0",
-    "prettier": "^1.18.2"
+    "ava": "^2.4.0",
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "^6.9.0",
+    "eslint-plugin-prettier": "^3.1.2",
+    "husky": "^4.0.9",
+    "lint-staged": "^9.5.0",
+    "prettier": "^1.19.1"
   },
   "repository": {
     "type": "git",
