@@ -57,4 +57,4 @@ We use [SemVer](http://semver.org/) for versioning.
 
 ## List of Contributors
 
-[JT Houk](https://github.com/Pterobyte)
+[JT Houk](https://github.com/HoukasaurusRex)

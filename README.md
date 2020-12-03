@@ -1,12 +1,12 @@
 # Dropbox Paper CMS
 
 [![NPM Total Downloads](https://img.shields.io/npm/dt/dropbox-paper-cms.svg)](https://www.npmjs.com/package/dropbox-paper-cms)
-[![David Dependencies Status](https://david-dm.org/pterobyte/dropbox-paper-cms.svg)](https://david-dm.org/pterobyte/dropbox-paper-cms)
-[![Language grade: JavaScript](https://img.shields.io/lgtm/grade/javascript/g/Pterobyte/dropbox-paper-cms.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/Pterobyte/dropbox-paper-cms/context:javascript)
-[![prs welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/pterobyte/dropbox-paper-cms/master)
+[![David Dependencies Status](https://david-dm.org/HoukasaurusRex/dropbox-paper-cms.svg)](https://david-dm.org/HoukasaurusRex/dropbox-paper-cms)
+[![Language grade: JavaScript](https://img.shields.io/lgtm/grade/javascript/g/HoukasaurusRex/dropbox-paper-cms.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/HoukasaurusRex/dropbox-paper-cms/context:javascript)
+[![prs welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/HoukasaurusRex/dropbox-paper-cms/master)
 [![styled with prettier](https://img.shields.io/badge/styled_with-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FPterobyte%2Fdropbox-paper-cms.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2FPterobyte%2Fdropbox-paper-cms?ref=badge_shield)
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FHoukasaurusRex%2Fdropbox-paper-cms.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2FHoukasaurusRex%2Fdropbox-paper-cms?ref=badge_shield)
 
 Using [Dropbox Paper APIs](https://dropbox.github.io/dropbox-api-v2-explorer/) to generate static content your CMS website
 
@@ -15,7 +15,7 @@ Using [Dropbox Paper APIs](https://dropbox.github.io/dropbox-api-v2-explorer/) t
 ![dropbox](assets/dropbox.png)
 ![vuepress](assets/vuepress.png)
 
-Dropbox Paper CMS was developed so that CMS sites could easily update their content without writing any code. One only needs to write documents in [Dropbox Paper](https://paper.dropbox.com/), and Dropbox Paper CMS  will fetch documents in markdown, save them locally, then optionally update your CMS sidebar with new file paths (currently only available for vuepress, [PRs welcome](https://github.com/pterobyte/dropbox-paper-cms/.github/CONTRIBUTING.md/.github/CONTRIBUTING.md)).
+Dropbox Paper CMS was developed so that CMS sites could easily update their content without writing any code. One only needs to write documents in [Dropbox Paper](https://paper.dropbox.com/), and Dropbox Paper CMS  will fetch documents in markdown, save them locally, then optionally update your CMS sidebar with new file paths (currently only available for vuepress, [PRs welcome](https://github.com/HoukasaurusRex/dropbox-paper-cms/.github/CONTRIBUTING.md/.github/CONTRIBUTING.md)).
 
 ## Contents  
 
@@ -181,17 +181,17 @@ paperCMS
 
 ## Contributing
 
-Please read [CONTRIBUTING.md](https://github.com/pterobyte/dropbox-paper-cms/.github/CONTRIBUTING.md/.github/CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull requests to us.
+Please read [CONTRIBUTING.md](https://github.com/HoukasaurusRex/dropbox-paper-cms/.github/CONTRIBUTING.md/.github/CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull requests to us.
 
 ## Authors
 
-- **JT Houk** - [Pterobyte](https://github.com/pterobyte)
+- **JT Houk** - [HoukasaurusRex](https://github.com/HoukasaurusRex)
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](https://github.com/pterobyte/dropbox-paper-cms/LICENSE) file for details
+This project is licensed under the MIT License - see the [LICENSE](https://github.com/HoukasaurusRex/dropbox-paper-cms/LICENSE) file for details
 
-[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FPterobyte%2Fdropbox-paper-cms.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2FPterobyte%2Fdropbox-paper-cms?ref=badge_large)
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FHoukasaurusRex%2Fdropbox-paper-cms.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2FHoukasaurusRex%2Fdropbox-paper-cms?ref=badge_large)
 
 ## Acknowledgments
 
