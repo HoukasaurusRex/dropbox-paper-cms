@@ -1,6 +1,6 @@
 {
   "name": "dropbox-paper-cms",
-  "version": "1.0.20",
+  "version": "1.0.21",
   "description": "Using Dropbox Paper APIs to generate static content in Vuepress",
   "main": "index.js",
   "scripts": {
